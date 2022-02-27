@@ -15,7 +15,7 @@ resource "aws_instance" "dev" {
     tags = {
       "Name" = "dev${count.index}"
     }
-    vpc_security_group_ids = ["sg-0e39eb3eec3d9b28c"] #ID do security group
+    vpc_security_group_ids = ["${aws_security_group.acesso-ssh.id}"] #ID do security group (associa security group a instância EC2, usei o comando 'terraform show' pra ver o id)
 }
 
 ## Criar security groups
