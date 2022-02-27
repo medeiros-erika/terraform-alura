@@ -15,7 +15,7 @@ resource "aws_instance" "dev" {
     tags = {
       "Name" = "dev${count.index}"
     }
-    vpc_security_group_ids = ["vpc-00fbb870d0a3f5da2"] #ID do security group (ID da VPC)
+    vpc_security_group_ids = ["sg-0e39eb3eec3d9b28c"] #ID do security group
 }
 
 ## Criar security groups
