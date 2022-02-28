@@ -42,6 +42,16 @@ No aws configure, inserir as credenciais:
     
     depends_on = [aws_s3_bucket.dev4])
    
-7) 
+7) Criar resources em regions diferentes
+   - uso do alias:
+
+        provider "aws" {
+            region  = "us-east-1"
+        }
+        provider "aws" {
+            alias = "us-east-2"
+            region  = "us-east-2"
+        }
+
 
 
