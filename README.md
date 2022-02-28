@@ -43,7 +43,8 @@ No aws configure, inserir as credenciais:
     depends_on = [aws_s3_bucket.dev4])
    
 7) Criar resources em regions diferentes
-   - uso do alias:
+   - Importar key pair na nova region (dashboard EC2). A key pair (terraform-aws-pub) será a mesma que foi utilizada na region "sa-east-1".
+   - Uso do alias:
 
         provider "aws" {
             region  = "us-east-1"
@@ -52,6 +53,7 @@ No aws configure, inserir as credenciais:
             alias = "us-east-2"
             region  = "us-east-2"
         }
+    - Vincular os resources da nova region
 
 
 
