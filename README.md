@@ -23,9 +23,25 @@ No aws configure, inserir as credenciais:
    - Para conectar-se à instância, o security group deve regras de entrada que permitam acesso SSH (para instâncias Linux) ou acesso RDP (para instâncias Windows). Link: https://docs.aws.amazon.com/pt_br/AWSEC2/latest/UserGuide/security-group-rules-reference.html
    - Criar security group
    - Associar security group às intâncias criadas (vpc_security_group_ids)
+
    - Fazer o SSH:
      - Ir na Instância > Conect
      - Copiar: ssh -i "terraform-alura.pem" ubuntu@ec2-54-232-199-52.sa-east-1.compute.amazonaws.com
      - Subtituir "terraform-alura.pem" pelo path onde a chave privada está localizada 'ssh -i ~/.ssh/terraform-aws ubuntu@ec2-54-232-199-52.sa-east-1.compute.amazonaws.com'
 
-6)
+    IMPORTANTE: 
+    vpc_security_group_ids = [vpc_security_group_ids""]
+    
+    pode ser subtituído por:
+
+    vpc_security_group_ids = ["${aws_security_group.acesso-ssh.id}"]
+
+6) Criar bucket S3
+   - Criar uma intância EC2
+   - Dependências entre recursos, usando:
+    
+    depends_on = [aws_s3_bucket.dev4])
+   
+7) 
+
+
