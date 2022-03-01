@@ -1,3 +1,8 @@
+Comandos básicos:
+    terraform init:
+    terraform plan -out:
+    terraform
+
 1) Credenciais AWS:
    
 - Criar usuário IAM e colocar em algum grupo (ou criar o grupo) com acesso de admin
@@ -55,5 +60,11 @@ No aws configure, inserir as credenciais:
         }
     - Vincular os resources da nova region
 
+8) Trabalhando com variáveis
+   
+        criar arquivo 'vars.tf' e criar as variáveis a serem referenciadas nos demais arquivos.tf, referenciar como:
+        
+        var.<variable>
+    
 
 

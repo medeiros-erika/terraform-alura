@@ -8,7 +8,7 @@ resource "aws_security_group" "acesso-ssh" {
     from_port        = 22
     to_port          = 22
     protocol         = "tcp"
-    cidr_blocks = ["179.251.246.120/32"] # IP permitido - IP dinâmico (ver em: https://whatismyipaddress.com/)
+    cidr_blocks = var.cdirs_acessos_remotos # IP permitido - IP dinâmico (ver em: https://whatismyipaddress.com/)
   }
   tags = {
     Name = "ssh"
@@ -25,7 +25,7 @@ resource "aws_security_group" "acesso-ssh-us-east-2" {
     from_port        = 22
     to_port          = 22
     protocol         = "tcp"
-    cidr_blocks = ["179.251.246.120/32"] # IP permitido - IP dinâmico (ver em: https://whatismyipaddress.com/)
+    cidr_blocks = var.cdirs_acessos_remotos # IP permitido - IP dinâmico (ver em: https://whatismyipaddress.com/)
   }
   tags = {
     Name = "ssh"

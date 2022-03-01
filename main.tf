@@ -18,7 +18,7 @@ resource "aws_instance" "dev" {
     count = 3
     ami = "ami-090006f29ecb2d79a"
     instance_type = "t2.micro"
-    key_name = "terraform-alura"
+    key_name = var.key_name
     tags = {
       "Name" = "dev${count.index}"
     }
@@ -30,7 +30,7 @@ resource "aws_instance" "dev" {
 resource "aws_instance" "dev4" {
     ami = "ami-090006f29ecb2d79a"
     instance_type = "t2.micro"
-    key_name = "terraform-alura"
+    key_name = var.key_name
     tags = {
       "Name" = "dev4"
     }
@@ -40,9 +40,9 @@ resource "aws_instance" "dev4" {
 
 ## Criar a instância onde o S3 estará
 resource "aws_instance" "dev5" {
-    ami = "ami-090006f29ecb2d79a"
+    ami = var.amis["sa-east-1"]
     instance_type = "t2.micro"
-    key_name = "terraform-alura"
+    key_name = var.key_name
     tags = {
       "Name" = "dev5"
     }
@@ -52,9 +52,9 @@ resource "aws_instance" "dev5" {
 ## Criar máquina dev6 em outra region (deverá criar em paralelo: security group, ami, etc pois mudou a region)
 resource "aws_instance" "dev6" {
     provider = aws.us-east-2
-    ami = "ami-0b614a5d911900a9b"
+    ami = var.amis["us-east-2"]
     instance_type = "t2.micro"
-    key_name = "terraform-aws"
+    key_name = var.key_name
     tags = {
       "Name" = "dev6"
     }
