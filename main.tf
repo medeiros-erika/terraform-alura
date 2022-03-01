@@ -16,7 +16,7 @@ provider "aws" {
 ## Criar 3 máquinas(instâncias EC2)
 resource "aws_instance" "dev" {
     count = 3
-    ami = "ami-090006f29ecb2d79a"
+    ami = var.amis["sa-east-1"]
     instance_type = "t2.micro"
     key_name = "${var.key_name}"
     tags = {
@@ -28,7 +28,7 @@ resource "aws_instance" "dev" {
 
 ## Criar a instância onde o S3 estará
 resource "aws_instance" "dev4" {
-    ami = "ami-090006f29ecb2d79a"
+    ami = var.amis["sa-east-1"]
     instance_type = "t2.micro"
     key_name = "${var.key_name}"
     tags = {
@@ -60,6 +60,21 @@ resource "aws_instance" "dev6" {
     }
     vpc_security_group_ids = ["${aws_security_group.acesso-ssh-us-east-2.id}"] #ID do security group (fazendo referência ao security group da region us-east-1
     depends_on = [aws_dynamodb_table.dynamodb-homol]
+}
+
+
+# Criando uma máquina dev7 pra testar todas as variáveis
+
+## Criar máquina dev6 em outra region (deverá criar em paralelo: security group, ami, etc pois mudou a region)
+resource "aws_instance" "dev7" {
+    provider = aws.us-east-2
+    ami = var.amis["us-east-2"]
+    instance_type = "t2.micro"
+    key_name = "${var.key_name}"
+    tags = {
+      "Name" = "dev7"
+    }
+    vpc_security_group_ids = ["${aws_security_group.acesso-ssh-us-east-2.id}"] #ID do security group (fazendo referência ao security group da region us-east-1
 }
 
 # Criar o bucket S3 numa nova instância EC2 (o bucket é multiregional, não precisa identificar a region)

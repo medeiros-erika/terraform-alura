@@ -64,9 +64,40 @@ No aws configure, inserir as credenciais:
    
         criar arquivo 'vars.tf' e criar as variáveis a serem referenciadas nos demais arquivos.tf, referenciar como:
         
-        var.<variable>
+        Exemplo de variável para ami:
+        ami = "${var.amis["us-east-2"]}"
 
 Ver documentacao: https://www.terraform.io/language/values/variables
-    
+
+9) Como remover recursos
+    Forma 1: excluir o resource e dar o apply
+    Forma 2: via linha de comando:
+
+    terraform destroy -target <nome_do_recurso>
+
+    Ex.: 
+
+    terraform destroy -target aws_instance.dev4
+
+    Obs.: se o recurso tiver dependência, ex.: a máquina EC2 "aws_instance.dev4" tem uma dependência: depends_on = [aws_s3_bucket.dev4]. Neste caso, devemos dar o destroy no bucket e assim remover 2 resources:
+
+    terraform destroy -target aws_bucket.dev4
+
+    Forma 3: comentar o bloco
+    /*
+    bloco do resource
+    */
+
+    Forma 4: destruir tudo!!!!!!!
+
+    terraform destroy
+
+10) Utilizando outputs
+    Permite dar o comando "terraform output" e printar uma informação
+    Antes de dar o 'terraform output', tem que dar o 'terraform apply -out plano' e depois o 'terraform refresh'
+
+    Se a máquina estiver stopada, então 'public_ip' vai ser ips = ""
+
+11) Trabalhando em equipe - mantendo o 'terraform.tfstate' na nuvem
 
 
