@@ -2,7 +2,7 @@
 
 # Definir variável para 'amis'
 variable "amis" {
-    type = map
+    type = map # este tipo contém, em sua declaração, chaves e valores
 
     default = {
         "sa-east-1" = "ami-090006f29ecb2d79a"
@@ -21,3 +21,5 @@ variable "cdirs_acessos_remotos"{
 variable "key_name" {
     default = "terraform-alura"
 }
+
+# Utilizando variáveis

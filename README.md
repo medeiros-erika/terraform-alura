@@ -65,6 +65,8 @@ No aws configure, inserir as credenciais:
         criar arquivo 'vars.tf' e criar as variáveis a serem referenciadas nos demais arquivos.tf, referenciar como:
         
         var.<variable>
+
+Ver documentacao: https://www.terraform.io/language/values/variables
     
 
 
