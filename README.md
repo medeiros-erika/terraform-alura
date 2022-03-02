@@ -99,5 +99,14 @@ Ver documentacao: https://www.terraform.io/language/values/variables
     Se a máquina estiver stopada, então 'public_ip' vai ser ips = ""
 
 11) Trabalhando em equipe - mantendo o 'terraform.tfstate' na nuvem
-
-
+    - Verificar se a infra no ar é exatamente o que está refletido nos arquivos: sempre dar o terraform plan e verificar se tudo foi apicado (apply)
+    - Ver docs: https://www.terraform.io/language/settings/backends/remote
+    - Criar conta Terraform Cloud, criar organization e gerar o token
+    - Comandos para colocar o token:
+        1) ir para o diretório "HOME"
+        2) vi .terraformrc
+        3) colocar as credenciais (ver: https://www.terraform.io/cli/config/config-file)
+        4) cat .terraformrc para checar
+    - Criar workspace com o seguintes passos:
+        1) Ver: https://www.terraform.io/language/settings/backends/remote
+        2) Criar um arquivo remote-state.tf e inserir basic config constente no item 1:

@@ -88,6 +88,22 @@ resource "aws_s3_bucket" "dev4" {
   }
 }
 
+
+# Criar novo bucket
+
+# Criar o bucket S3 numa nova instância EC2 (o bucket é multiregional, não precisa identificar a region)
+
+# Criar o bucket S3 numa nova instância EC2 (o bucket é multiregional, não precisa identificar a region)
+
+resource "aws_s3_bucket" "homologacao" {
+  bucket = "erika-homol-alura"
+  acl = "private"
+
+  tags = {
+    Name        = "erika-homol-alura"
+  }
+}
+
 # Criar resource Dynamo
 
 resource "aws_dynamodb_table" "dynamodb-homol" {
